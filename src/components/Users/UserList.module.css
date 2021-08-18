@@ -1,0 +1,24 @@
+.user-list {
+    list-style: none;
+    padding: 1rem;
+}
+
+
+.user-list-item {
+    width: 90%;
+    background-color: whitesmoke;
+    padding: 0.2rem;
+}
+
+.user-list-header {
+    margin-bottom: 0;
+    padding: 0 0 0 1rem;
+    font-style: italic;
+}
+
+.card {
+    margin: 0.5rem;
+    width: 30rem;
+    border-radius: 10px;
+    background: linear-gradient( #99B290 0%, #165B51 100%);
+}

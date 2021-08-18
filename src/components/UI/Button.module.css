@@ -1,0 +1,17 @@
+.button {
+    margin: 0 1rem 1rem 1rem;
+    padding: 0.3rem 0.2rem 0.3rem 0.2rem;
+    text-align:center;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    background: #333333;
+    border-color: #333333;
+    color: #ffff;
+}
+
+.button:focus {
+    outline: none;
+}
