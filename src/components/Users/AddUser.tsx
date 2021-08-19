@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from "react";
+import React, {FormEvent, useRef, useState} from "react";
 import styles from "./AddUser.module.css";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
@@ -10,24 +10,19 @@ interface IProps {
 }
 
 const AddUser = (props: IProps) => {
-    const [enteredUserName, setEnteredUserName] = useState("");
-    const [enteredAge, setEnteredAge] = useState("");
+    const nameInputRef = useRef<any>();
+    const ageInputRef = useRef<any>();
+
     const [errorMessage, setErrorMessage] = useState({title: "", message: ""});
     const [showErrorModal, setShowErrorModal] = useState(false);
-
-
-    function userNameChangeHandler(ev: ChangeEvent<HTMLInputElement>) {
-            setEnteredUserName(ev.target.value)
-    }
-
-    function ageChangeHandler(ev: ChangeEvent<HTMLInputElement>) {
-            setEnteredAge(ev.target.value)
-    }
 
     function formSubmitHandler(ev: FormEvent) {
         ev.preventDefault();
 
-        if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0 || parseInt(enteredAge) < 1) {
+        const enteredName = nameInputRef.current.value;
+        const enteredUserAge = ageInputRef.current.value;
+
+        if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0 || parseInt(enteredUserAge) < 1) {
             setErrorMessage({
                 title: "Invalid input!",
                 message: "Please enter a valid name and age (non-empty values)."
@@ -35,10 +30,10 @@ const AddUser = (props: IProps) => {
             setShowErrorModal(true);
             return;
         } else {
-            props.onAddNewUser(Math.random().toString(), enteredUserName, enteredAge);
+            props.onAddNewUser(Math.random().toString(), enteredName, enteredUserAge);
 
-            setEnteredUserName('');
-            setEnteredAge('');
+            nameInputRef.current.value = '';
+            ageInputRef.current.value = '';
         }
     }
 
@@ -53,9 +48,9 @@ const AddUser = (props: IProps) => {
                 <h3 className={styles["user-input-header"]}>User Input</h3>
                 <form className={styles["form-control"]} onSubmit={formSubmitHandler}>
                     <label htmlFor={"input-username"} className={styles["label"]}> Username
-                        <input className={styles["input"]} id={"input-username"} type={"text"} onChange={userNameChangeHandler} value={enteredUserName}/></label>
+                        <input className={styles["input"]} id={"input-username"} type={"text"}  ref={nameInputRef}/></label>
                     <label htmlFor={"input-age"} className={styles["label"]}> Age (years)
-                        <input className={styles["input"]} id={"input-age"} type={"number"} onChange={ageChangeHandler} value={enteredAge}/></label>
+                        <input className={styles["input"]} id={"input-age"} type={"number"}  ref={ageInputRef}/></label>
                     <Button type={"submit"}>Add User</Button>
                 </form>
             </Card>

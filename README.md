@@ -1,7 +1,7 @@
 ## Description
 
 An easy React & TypeScript application to store usernames and ages. When a user enters invalid input, an error modal is shown. 
-I developed this application to practice React fundamentals such as props and useState.
+I developed this application to practice React fundamentals such as props, state, fragments, portals and refs.
 
 ## Installation
 
