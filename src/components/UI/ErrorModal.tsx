@@ -11,7 +11,7 @@ interface IProp {
 const ErrorModal = (props: IProp) => {
 
     return (
-        <div>
+        <React.Fragment>
             <div className={styles["backdrop"]} onClick={props.onConfirm}/>
             <div className={styles["modal"]}>
                 <header className={styles["header"]}>
@@ -24,7 +24,7 @@ const ErrorModal = (props: IProp) => {
                     <Button onClick={props.onConfirm}>Got it!</Button>
                 </footer>
             </div>
-        </div>
+        </React.Fragment>
 
     )
 }

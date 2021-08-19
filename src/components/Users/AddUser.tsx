@@ -47,7 +47,7 @@ const AddUser = (props: IProps) => {
     }
 
     return (
-        <div>
+        <React.Fragment>
             {showErrorModal ?  <ErrorModal title={errorMessage.title} message={errorMessage.message} onConfirm={errorHandler}/> : null}
             <Card className={styles["card"]}>
                 <h3 className={styles["user-input-header"]}>User Input</h3>
@@ -59,7 +59,7 @@ const AddUser = (props: IProps) => {
                     <Button type={"submit"}>Add User</Button>
                 </form>
             </Card>
-        </div>
+        </React.Fragment>
 
     )
 }
